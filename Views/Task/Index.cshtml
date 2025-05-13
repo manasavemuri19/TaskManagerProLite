@@ -1,0 +1,17 @@
+﻿@model List<TaskManagerProLite.Models.TaskItem>
+
+<h2>Tasks</h2>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Status</th>
+    </tr>
+    @foreach (var task in Model)
+    {
+        <tr>
+            <td>@task.Title</td>
+            <td>@task.Status</td>
+        </tr>
+    }
+</table>
+<a href="/Task/Create">Add Task</a>
