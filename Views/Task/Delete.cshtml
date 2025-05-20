@@ -1,0 +1,10 @@
+﻿@model TaskManagerProLite.Models.TaskItem
+
+<h2>Confirm Delete</h2>
+<p>Are you sure you want to delete: <strong>@Model.Title</strong>?</p>
+
+<form method="post" asp-action="DeleteConfirmed">
+    @Html.HiddenFor(model => model.Id)
+    <button type="submit">Yes, Delete</button>
+    <a href="/Task/Index">Cancel</a>
+</form>

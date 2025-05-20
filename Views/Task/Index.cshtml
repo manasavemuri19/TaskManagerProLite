@@ -1,4 +1,7 @@
-﻿@model List<TaskManagerProLite.Models.TaskItem>
+﻿
+@*Razor directive specifying that this view will receive a list of TaskItem.*@
+
+@model List<TaskManagerProLite.Models.TaskItem>
 
 <h2>Tasks</h2>
 <table border="1">
@@ -6,12 +9,25 @@
         <th>Title</th>
         <th>Status</th>
     </tr>
-    @foreach (var task in Model)
+    @foreach (var task in Model) // Loops over the Model (your tasks list passed from Controller -> return View(tasks)).
     {
         <tr>
-            <td>@task.Title</td>
+            <td>@task.Title</td>  @*Inject the task's Title inside HTML*@
             <td>@task.Status</td>
+            <td>
+                <a href="/Task/Edit/@task.Id">Edit</a>
+            </td>
+            <td>
+                <a href="/Task/Delete/@task.Id">Delete</a>
+            </td>
+
         </tr>
     }
+    @* task is your own temp variable, Model is built-in Razor variable holding data passed from controller *@
+    @*
+        Like Model, ViewBag and ViewData are other in-built variables. ViewBag for Dynamic object, short-lived data
+        and ViewData for Dictionary style, less used now. While, Model is strongly typed and recommended.
+    *@
 </table>
 <a href="/Task/Create">Add Task</a>
+

@@ -1,13 +1,27 @@
-﻿
-@model TaskManagerProLite.Models.TaskItem
+﻿@model TaskManagerProLite.Models.TaskItem //Razor directive specifying that this view works with single TaskItem
 
-<h2>Create Task</h2>
-<form method="post">
+<h2>Create Task</h2> 
+<form method="post">   <!-- action attribute is not specified, so the browser automatically posts to the current page URL, which is /Task/Create (GET).And since your controller has a POST action for /Task/Create, it matches automatically. -->
+    
+    @Html.ValidationSummary()
     <label>Title:</label><br />
     <input type="text" name="Title" /><br />
+    @Html.ValidationMessage("Title")
+
+    @Html.ValidationSummary()
     <label>Description:</label><br />
     <textarea name="Description"></textarea><br />
+    @Html.ValidationMessage("Description")
+
+    @Html.ValidationSummary()
     <label>Status:</label><br />
     <input type="text" name="Status" /><br />
+    @Html.ValidationMessage("Status")
+
     <button type="submit">Create</button>
 </form>
+
+@*Input names must match model properties (Title, Description, Status). 
+  MVC automatically maps these to the model in controller action Create(TaskItem task).*@
+
+

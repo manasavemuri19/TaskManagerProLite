@@ -1,0 +1,20 @@
+﻿@model TaskManagerProLite.Models.TaskItem
+
+<h2>Edit Task</h2>
+<form method="post">
+    @Html.HiddenFor(m => m.Id) @*Hidden field is critical to carry the task's ID without showing it.*@
+
+    <label>Title:</label><br />
+    @Html.TextBoxFor(m => m.Title)<br />
+    @Html.ValidationMessageFor(m => m.Title)
+
+    <label>Description:</label><br />
+    @Html.TextAreaFor(m => m.Description)<br />
+    @Html.ValidationMessageFor(m => m.Description)
+
+    <label>Status:</label><br />
+    @Html.TextBoxFor(m => m.Status)<br />
+    @Html.ValidationMessageFor(m => m.Status)
+
+    <button type="submit">Update</button>
+</form>
